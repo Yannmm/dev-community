@@ -19,8 +19,8 @@
         <div class="card text-center shadow" style="min-height: 380px">
           <div class="card-body">
             <%= image_tag "avatar.png", style: "width: 150px; border-radius: 50%; border: 2px solid #0d6efd", class: "mb-3" %>
-            <div class="user-info">
-              <h5><%= user.name %></h5>
+            <div class="user-info", data-controller="user-name">
+              <h5 data-user-name-target="name" data-action="click->user-name#getUserName"><%= user.name %></h5>
               <p class="lead"><%= user.profile_title %></p>
               <small class="text-primary"><%= user.country %></small><br>
 
