@@ -1,13 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="edit-user-description"
+// Connects to data-controller="edit-user-details"
 export default class extends Controller {
   connect() {}
 
   initialize() {
     this.element.setAttribute(
       "data-action",
-      "click->edit-user-description#showModal"
+      "click->edit-user-details#showModal"
     );
   }
 

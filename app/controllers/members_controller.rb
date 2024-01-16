@@ -15,4 +15,6 @@ class MembersController < ApplicationController
       end
     end
   end
+
+  def edit_details; end
 end
