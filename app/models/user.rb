@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def address 
-    "#{city}, #{state}, #{country}, #{pincode}"
+    "#{city}, #{state}, #{country} #{street_address}, #{pincode}"
   end
 
   def self.ransackable_attributes(auth_object = nil)
