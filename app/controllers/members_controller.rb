@@ -34,7 +34,6 @@ class MembersController < ApplicationController
   private
 
   def details_params
-    params.require(:user).permit(:first_name, :last_name, :city, :state, :country, :pincode, :profile_title,
-                                 :street_address)
+    params.require(:user).permit(:first_name, :last_name, :city, :state, :country, :pincode, :profile_title, :street_address)
   end
 end

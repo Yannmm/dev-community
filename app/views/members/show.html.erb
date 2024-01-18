@@ -9,7 +9,7 @@
         <% if user_signed_in? && @user == current_user %>
           <div class="col-lg-2">
             <div class="d-flex justify-content-end">
-              <%= link_to edit_member_details_path, data: { controller: "edit-user-details" } do %>
+              <%= link_to edit_member_details_path, data: { controller: "bs-modal-form" } do %>
                 <i class="bit bi-pencil-fill"></i>
             <% end %>
           </div>
@@ -31,7 +31,7 @@
         <div class="col-lg-6">
           <div class="d-flex justify-content-end">
             <%= link_to edit_member_description_path, data: { controller:
-            "edit-user-description" } do %>
+            "bs-modal-form" } do %>
               <i class="bit bi-pencil-fill"></i>
             <% end %>
           </div>
