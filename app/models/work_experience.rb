@@ -1,7 +1,15 @@
 class WorkExperience < ApplicationRecord
+  EMPLOYMENT_TYPE = %w[Full-time Part-time Self-employed Freelance Trainee Internship].freeze
+
+  LOCATION_TYPE = %w[On-site Hybrid Remote].freeze
+
   belongs_to :user # as singular
 
-  validates :company, :start_date, :employment_type, :job_title, :location, :location_type, presence: true
+  validates :company, :start_date, :job_title, :location, presence: true
+
+  validates :employment_type, presence: true, inclusion: { in: EMPLOYMENT_TYPE, message: 'not a valid employment type' }
+
+  validates :location_type, presence: true, inclusion: { in: LOCATION_TYPE, message: 'not a valid location type' }
 
   validate :work_experience_last_date, :presence_of_end_date
 
