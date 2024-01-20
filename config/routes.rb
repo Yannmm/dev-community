@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get 'edit_details', to: "members#edit_details", as: 'edit_member_details'
 
   patch 'update_details', to: 'members#update_details', as: 'update_member_details'
+
+  resources :work_experiences
 end
