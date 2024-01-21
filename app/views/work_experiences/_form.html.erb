@@ -6,7 +6,7 @@
           <h3>
             <%= pluralize(@work_experience.errors.count, 'error') %> prohibited your work experience from being saved.
             <ul>
-              <%= @work_experience.errors.each do |error| %>
+              <% @work_experience.errors.each do |error| %>
                 <li><%= error.full_message %></li>
               <% end %>
             </ul>
