@@ -27,7 +27,7 @@
         
         <div class="form-group">
           <%= form.label :employment_type, %q[Employment Type<span class="text-danger">*</span>].html_safe, class: "mb-2 mt-3" %>
-          <%= form.select :employment_type, options_for_select(WorkExperience::EMPLOYMENT_TYPE), { prompt: 'Select employment type' }, { class: "form-select" } %>
+          <%= form.select :employment_type, options_for_select(WorkExperience::EMPLOYMENT_TYPE, @work_experience.employment_type), { prompt: 'Select employment type' }, { class: "form-select" } %>
         </div>
 
         <div class="form-group">
@@ -37,7 +37,7 @@
 
         <div class="form-group">
           <%= form.label :location_type, %q[Location Type<span class="text-danger">*</span>].html_safe, class: "mb-2 mt-3" %>
-          <%= form.select :location_type, options_for_select(WorkExperience::LOCATION_TYPE), { prompt: 'Select location type' }, { class: "form-select" } %>
+          <%= form.select :location_type, options_for_select(WorkExperience::LOCATION_TYPE, form.object.location_type), { prompt: 'Select location type' }, { class: "form-select" } %>
         </div>
 
         <div class="form-group row">
