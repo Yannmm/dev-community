@@ -41,25 +41,25 @@
         </div>
 
         <div class="form-group row">
+          <div class="col-lg-12 mt-4">
+            <div class="form-check form-switch">
+              <%= form.check_box :currently_working_here, class: "form-check-input", role: "switch", data: { controller: "disable-end-date" } %>
+              <%= form.label :currently_working_here, %q[I am currently working here], class: "form-check-label" %>
+            </div>
+          </div>
+
           <div class="col-log-6">
             <%= form.label :start_date, %q[Start Date<span class="text-danger">*</span>].html_safe, class: "mb-2 mt-3" %>
             <%= form.date_field :start_date, class: "form-control"%>
           </div>
           <div class="col-log-6">
-            <%= form.label :start_date, "End Date", class: "mb-2 mt-3" %>
+            <%= form.label :end_date, "End Date", class: "mb-2 mt-3" %>
             <%= form.date_field :end_date, class: "form-control"%>
           </div>
         </div>
 
-        <div class="col-lg-6 mt-4">
-          <div class="form-check form-switch">
-            <%= form.check_box :currently_working_here, class: "form-check-input", role: "switch" %>
-            <label for="currently_working_here" class="form-check-label">I am currently working here</label>
-          </div>
-        </div>
-
         <div class="form-group">
-        <%= form.label :start_date, "Description", class: "mb-2 mt-3" %>
+        <%= form.label :description, "Description", class: "mb-2 mt-3" %>
           <%= form.text_area :description, class: "form-control", rows: 5 %>
         </div>
 
