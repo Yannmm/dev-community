@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   patch 'update_details', to: 'members#update_details', as: 'update_member_details'
 
   resources :work_experiences
+
+  resources :connections
 end
