@@ -40,10 +40,10 @@
           <%= form.select :location_type, options_for_select(WorkExperience::LOCATION_TYPE, form.object.location_type), { prompt: 'Select location type' }, { class: "form-select" } %>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row" data-controller="disable-end-date">
           <div class="col-lg-12 mt-4">
             <div class="form-check form-switch">
-              <%= form.check_box :currently_working_here, class: "form-check-input", role: "switch", data: { controller: "disable-end-date" } %>
+              <%= form.check_box :currently_working_here, class: "form-check-input", role: "switch", data: { action: "click->disable-end-date#disableEndDate", disable_end_date_target: "switch" } %>
               <%= form.label :currently_working_here, %q[I am currently working here], class: "form-check-label" %>
             </div>
           </div>
@@ -54,7 +54,7 @@
           </div>
           <div class="col-log-6">
             <%= form.label :end_date, "End Date", class: "mb-2 mt-3" %>
-            <%= form.date_field :end_date, class: "form-control"%>
+            <%= form.date_field :end_date, class: "form-control", data: { disable_end_date_target: "endDateField" } %>
           </div>
         </div>
 
