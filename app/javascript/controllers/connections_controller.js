@@ -18,8 +18,8 @@ export default class extends Controller {
     this.url = this.element.getAttribute("href");
 
     const element = this.connectionTarget;
-    const requester_id = element.dataset.requester_id;
-    const connected_id = element.dataset.connected_id;
+    const requester_id = element.dataset.requesterId;
+    const connected_id = element.dataset.connectedId;
 
     const connectionBody = new FormData();
 
