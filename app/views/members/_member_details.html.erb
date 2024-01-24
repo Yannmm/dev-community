@@ -5,8 +5,16 @@
     <p class="lead text-primary"><%= user.address %></p>
 
     <div id="user-connection-status">
-      <% if user_signed_in? && current_user.check_if_already_connected?(current_user, user) %>
-        <%= link_to "Connect", connections_path, class: "btn btn-primary", data: { controller: "connections", connections_target: "connection", requester_id: current_user.id, connected_id: user.id } %>
+      <% if user_signed_in? && current_user != user %>
+        <% if current_user.check_if_already_connected?(current_user, user) %>
+          <%= link_to "Connect", connections_path, class: "btn btn-primary", data: { controller: "connections", connections_target: "connection", requester_id: current_user.id, connected_id: user.id } %>
+        <% elsif current_user.connections.find_by(connected_user_id: user.id).status == 'pending' %>
+          <%= render "connections/create", connector: user %>
+        <% elsif current_user.connections.find_by(connected_user_id: user.id).status == 'accepted' %>
+          <button class="btn btn-success" type="button">Connected</button>
+        <% elsif current_user.connections.find_by(connected_user_id: user.id).status == 'rejected' %>
+        <button class="btn btn-danger" type="button">Rejected</button>
+        <% end %>
       <% end %>
     </div>
   </div>
