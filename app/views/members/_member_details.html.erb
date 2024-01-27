@@ -5,7 +5,7 @@
     <p class="lead text-primary"><%= user.address %></p>
 
     <div id="user-connection-status">
-      <% if user_signed_in? && current_user != user %>
+      <% if user_signed_in? %>
         <% if current_user.check_if_already_connected?(current_user, user) %>
           <%= link_to "Connect", connections_path, class: "btn btn-primary", data: { controller: "connections", connections_target: "connection", requester_id: current_user.id, connected_id: user.id } %>
         <% elsif get_connection_status(current_user, user) == 'pending' %>
