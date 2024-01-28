@@ -20,6 +20,15 @@ class ConnectionsController < ApplicationController
     end
   end
 
+  def update 
+    @connection = Connection.find(params[:id])
+    respond_to do |format|
+      if @connection.update(status: params[:connection][:status]) 
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("connection-status-#{@connection.id}", partial: "connections/update", locals: { connection: @connection }) }
+      end
+    end
+  end
+
   private
 
   def connection_params
