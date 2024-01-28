@@ -75,3 +75,5 @@ gem 'faker'
 gem 'ransack'
 gem 'devise'
 gem 'kaminari'
+
+gem 'pg'
