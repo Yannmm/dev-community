@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   patch 'update_details', to: 'members#update_details', as: 'update_member_details'
 
+  get 'member-connections/:id', to: 'members#connections', as: 'member_connections'
+
   resources :work_experiences
 
   resources :connections
