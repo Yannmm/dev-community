@@ -40,4 +40,8 @@ class User < ApplicationRecord
   def my_connections(user)
     Connection.where("(user_id = ? AND connected_user_id = ?) OR (user_id = ? AND connected_user_id = ?)", user.id, id, id, user.id)
   end
+
+  def mutually_connected_ids(user)
+    self.connected_user_ids.intersection(user.connected_user_ids)
+  end
 end
