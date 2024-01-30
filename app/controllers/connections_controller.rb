@@ -23,9 +23,19 @@ class ConnectionsController < ApplicationController
   def update 
     @connection = Connection.find(params[:id])
     respond_to do |format|
-      if @connection.update(status: params[:connection][:status]) 
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("connection-status-#{@connection.id}", partial: "connections/update", locals: { connection: @connection }) }
+      ActiveRecord::Base.transaction do 
+        if @connection.update(status: params[:connection][:status]) 
+          if @connection.status == 'accepted' 
+            receiver = @connection.received
+            requester = @connection.requested
+            receiver.connected_user_ids << requester.id
+            requester.connected_user_ids << receiver.id
+            receiver.save 
+            requester.save
+          end
+        end
       end
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("connection-status-#{@connection.id}", partial: "connections/update", locals: { connection: @connection }) }
     end
   end
 
