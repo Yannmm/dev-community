@@ -36,15 +36,13 @@ class MembersController < ApplicationController
 
   def connections
     @user = User.find(params[:id])
-    @connected_users = if params[:mutual_connections].present?
-                          mutually_connected_ids = current_user.mutually_connected_ids(@user)
-                          User.where(id: mutually_connected_ids)
+    total_users = if params[:mutual_connections].present?
+                          User.where(id: mutually_connected_ids = current_user.mutually_connected_ids(@user))
                         else
                           User.where(id: @user.connected_user_ids)
                         end
-    @connected_users = User.where(id: @user.connected_user_ids)
-
-    @total_connections = @connected_users.count
+    @connected_users = total_users.page(params[:page]).per(5)
+    @total_connections = total_users.count
   end
 
   private
