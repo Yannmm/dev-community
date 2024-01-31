@@ -1,5 +1,4 @@
 class MembersController < ApplicationController
-  # before_action :authenticate_user!, only: %i[edit_description update_description edit_details update_details]
 
   def show
     @user = User.find(params[:id])
