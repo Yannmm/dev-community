@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   has_many :connections, dependent: :destroy
 
-  # FIXME: try %i[xxx]
   validates *%i[first_name last_name profile_title email], presence: true
 
   validates :username, presence: true, uniqueness: true
