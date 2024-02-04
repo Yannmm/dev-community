@@ -75,4 +75,6 @@ RSpec.configure do |config|
 
   Capybara.javascript_driver = :chrome
   Capybara.default_driver = :chrome
+  # Maximize Capybara window size
+  Capybara.page.driver.browser.manage.window.maximize
 end
