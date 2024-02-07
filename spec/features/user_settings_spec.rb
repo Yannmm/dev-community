@@ -45,5 +45,34 @@ RSpec.feature "UserSettings", type: :feature do
 
       sleep 5
     end
+
+    it 'should allow users to edit their description' do 
+      visit "/member/#{@user.id}"
+
+      sleep 2
+
+      expect(page).to have_text(@user.name)
+      expect(page).to have_text(@user.profile_title)
+      expect(page).to have_text(@user.address)
+      expect(page).to have_text(@user.about)
+
+      find(:xpath, '//a[contains(@class, "edit-about")]//i[contains(@class, "bi-pencil-fill")]').click
+      sleep 5
+
+      expect(page).to have_text('Edit your description')
+
+      fill_in 'user_about', with: 'this is x xsdifd ddddiscxxxx'
+
+      sleep 2
+
+      click_button 'Save Changes'
+
+      expect(page).to have_current_path("/member/#{@user.id}")
+
+      expect(page).to have_text('this is x xsdifd ddddiscxxxx')
+
+      sleep 5
+
+    end
   end
 end
