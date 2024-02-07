@@ -1,44 +1,57 @@
-<div class="col-lg-8 mx-auto">
+<div class="col-lg-8 mx-auto mt-5 mb-5">
   <div class="card">
     <div class="card-header">
-    <h2 class="text-center card-title">Sign up</h2>
+      <h2 class="text-center card-title">Sign up</h2>
     </div>
-
     <div class="card-body">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false } }) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
 
-        <div class="from-group row">
+        <div class="form-group row">
           <div class="col-lg-6">
             <%= f.label :first_name, class: "mb-2" %>
-            <%= f.email_field :first_name, class: "form-control" %>
-            </div>
+            <%= f.text_field :first_name, class: "form-control" %>
+          </div>
           <div class="col-lg-6">
             <%= f.label :last_name, class: "mb-2" %>
-            <%= f.email_field :last_name, class: "form-control" %>
+            <%= f.text_field :last_name, class: "form-control" %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.label :profile_title, class: "mb-2" %>
+            <%= f.text_field :profile_title, class: "form-control" %>
           </div>
         </div>
-      
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <%= f.label :email, class: "mb-2" %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+
+          <div class="col-lg-6">
+            <%= f.label :username, class: "mb-2" %>
+            <%= f.text_field :username, class: "form-control" %>
+          </div>
         </div>
+
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <%= f.label :password, class: "mb-2" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
       
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <div class="col-lg-6">
+            <%= f.label :password_confirmation, class: "mb-2" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
         </div>
+
       
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-      
-        <div class="actions">
-          <%= f.submit "Sign up" %>
+        <div class="actions mt-4">
+          <%= f.submit "Sign up", class: "btn btn-primary" %>
         </div>
       <% end %>
       
@@ -46,7 +59,5 @@
     </div>
   </div>
 </div>
-
-
 
 
