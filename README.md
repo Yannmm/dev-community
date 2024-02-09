@@ -1,6 +1,6 @@
 # README
 
-> This tutorial project has been done and will be archive.
+> This tutorial project has been done and will be archived.
 > -- yannmm 2024.2.9
 
 This README would normally document whatever steps are necessary to get the
